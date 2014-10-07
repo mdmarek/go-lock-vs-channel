@@ -1,4 +1,4 @@
-Go : Locks vs Channels
+Locks vs Channels
 ======================
 
 Which is the faster or better way to share state in Go programming?
