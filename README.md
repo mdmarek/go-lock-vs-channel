@@ -2,6 +2,10 @@ Go : Locks vs Channels
 ======================
 
 Which is the faster or better way to share state in Go programming?
+In other words, is it a good idea to: "Do not communicate by sharing 
+memory; instead, share memory by communicating." This conversation 
+came up at work, so here is a simple answer to the question.
+
 These two simple programs add by one to a shared variable a million
 times. The results below were run on a four core Intel Core i7-4750HQ 
 CPU @ 2.00GHz. Each addition performs a lock, add, and unlock,
@@ -35,8 +39,8 @@ Total time: 116.041624ms
     Thread 01 ran: 747439 times
     Thread 05 ran: 9039 times
 
-Caveats
--------
+Wait, The Locking Code isn't Fair!
+----------------------------------
 
 Looking at the results you might complain that the lock version
 does not distribute the work evenly! You're right, it doesn't!
@@ -44,5 +48,5 @@ There were actually two version of the code using the lock. In
 the original code each gorutine received a fair share of the
 work. Intrestingly the run time was about the same ranging from
 110ms to about 125ms. I changed the code to actually match
-the chanadder.go which runs a bit slower, but does fair work
-sharing "automatically".
+chanadder.go a bit more, which does fair work sharing "automatically"
+because of the use of channels.
