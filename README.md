@@ -8,14 +8,14 @@ came up at work, so here is a simple answer to the question.
 
 These two simple programs add by one to a shared variable a million
 times. The results below were run on a four core Intel Core i7-4750HQ 
-CPU @ 2.00GHz. Each addition performs a lock, add, and unlock,
-with locking using a `sync.Mutex`.
+CPU @ 2.00GHz. Each function call to process performs a lock, add, 
+and unlock, with locking using a `sync.Mutex`.
 
 Results : chanadder.go
 ----------------------
 
     $ chanadder --threads 8
-    Total time: 218.021569ms
+    Total iterations: 1000000; total time: 221.342108ms, 221ns/op
         Thread 07 ran: 125000 times
         Thread 00 ran: 125000 times
         Thread 01 ran: 125000 times
@@ -29,7 +29,7 @@ Results : lockadder.go
 ----------------------
 
     $ lockadder --threads 8
-    Total time: 116.041624ms
+    Total iterations: 1000000; total time: 109.827864ms, 109ns/op
         Thread 06 ran: 1 times
         Thread 07 ran: 1 times
         Thread 02 ran: 1 times
