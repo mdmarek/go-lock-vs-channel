@@ -45,7 +45,7 @@ Wait, The Locking Code isn't Fair!
 Looking at the results you might complain that the lock version
 does not distribute the work evenly! You're right, it doesn't!
 There were actually two version of the code using the lock. In
-the original code each gorutine received a fair share of the
+the original code each goroutine received a fair share of the
 work. Intrestingly the run time was about the same ranging from
 110ms to about 125ms. I changed the code to actually match
 chanadder.go a bit more, which does fair work sharing "automatically"
