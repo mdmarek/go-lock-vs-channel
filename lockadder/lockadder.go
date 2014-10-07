@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+const Iterations = 1000000
+
 type SharedState struct {
 	X     uint64
 	L     sync.Mutex
@@ -22,7 +24,7 @@ func process(name string, ss *SharedState) {
 }
 
 func processLoop(name string, ss *SharedState) {
-	for ss.X < 1000000 {
+	for ss.X < Iterations {
 		process(name, ss)
 	}
 	ss.W.Done()
@@ -45,7 +47,8 @@ func main() {
 
 	t_finish := time.Now()
 
-	fmt.Printf("Total time: %v\n", t_finish.Sub(t_start))
+	duration := t_finish.Sub(t_start)
+	fmt.Printf("Total iterations: %v; total time: %v, %vns/op\n", Iterations, duration, duration.Nanoseconds()/Iterations)
 	for thread, runs := range ss.Stats {
 		fmt.Printf("    Thread %v ran: %v times\n", thread, runs)
 	}

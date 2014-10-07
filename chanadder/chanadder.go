@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+const Iterations = 1000000
+
 type SharedState struct {
 	X     uint64
 	Stats map[string]uint64
@@ -13,7 +15,7 @@ type SharedState struct {
 
 func process(name string, inprocess chan *SharedState, processed chan<- *SharedState) {
 	for ss := range inprocess {
-		if ss.X > 1000000 {
+		if ss.X >= Iterations {
 			processed <- ss
 			return
 		}
@@ -44,7 +46,8 @@ func main() {
 
 	t_finish := time.Now()
 
-	fmt.Printf("Total time: %v\n", t_finish.Sub(t_start))
+	duration := t_finish.Sub(t_start)
+	fmt.Printf("Total iterations: %v; total time: %v, %vns/op\n", Iterations, duration, duration.Nanoseconds()/Iterations)
 	for thread, runs := range ss.Stats {
 		fmt.Printf("    Thread %v ran: %v times\n", thread, runs)
 	}

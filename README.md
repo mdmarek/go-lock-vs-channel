@@ -13,14 +13,13 @@ Results : chanadder.go
 $ chanadder --threads 8
 Total time: 218.021569ms
     Thread 07 ran: 125000 times
-    Thread 00 ran: 125001 times
+    Thread 00 ran: 125000 times
     Thread 01 ran: 125000 times
     Thread 02 ran: 125000 times
     Thread 03 ran: 125000 times
     Thread 04 ran: 125000 times
     Thread 05 ran: 125000 times
     Thread 06 ran: 125000 times
-
 
 Results : lockadder.go
 ----------------------
