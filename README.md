@@ -14,30 +14,30 @@ with locking using a `sync.Mutex`.
 Results : chanadder.go
 ----------------------
 
-$ chanadder --threads 8
-Total time: 218.021569ms
-    Thread 07 ran: 125000 times
-    Thread 00 ran: 125000 times
-    Thread 01 ran: 125000 times
-    Thread 02 ran: 125000 times
-    Thread 03 ran: 125000 times
-    Thread 04 ran: 125000 times
-    Thread 05 ran: 125000 times
-    Thread 06 ran: 125000 times
+    $ chanadder --threads 8
+    Total time: 218.021569ms
+        Thread 07 ran: 125000 times
+        Thread 00 ran: 125000 times
+        Thread 01 ran: 125000 times
+        Thread 02 ran: 125000 times
+        Thread 03 ran: 125000 times
+        Thread 04 ran: 125000 times
+        Thread 05 ran: 125000 times
+        Thread 06 ran: 125000 times
 
 Results : lockadder.go
 ----------------------
 
-$ lockadder --threads 8
-Total time: 116.041624ms
-    Thread 06 ran: 1 times
-    Thread 07 ran: 1 times
-    Thread 02 ran: 1 times
-    Thread 03 ran: 1 times
-    Thread 04 ran: 1 times
-    Thread 00 ran: 243524 times
-    Thread 01 ran: 747439 times
-    Thread 05 ran: 9039 times
+    $ lockadder --threads 8
+    Total time: 116.041624ms
+        Thread 06 ran: 1 times
+        Thread 07 ran: 1 times
+        Thread 02 ran: 1 times
+        Thread 03 ran: 1 times
+        Thread 04 ran: 1 times
+        Thread 00 ran: 243524 times
+        Thread 01 ran: 747439 times
+        Thread 05 ran: 9039 times
 
 Wait, The Locking Code isn't Fair!
 ----------------------------------
